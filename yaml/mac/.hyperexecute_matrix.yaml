@@ -14,7 +14,7 @@ pre:
   - npm i lambdatest-cypress-cli
 
 matrix:
-  os: [linux]
+  os: [mac]
   browser: ["chrome"]
   files: ["actions.cy.js", "aliasing.cy.js", "assertions.cy.js", "connectors.cy.js", "cookies.cy.js"]
 
