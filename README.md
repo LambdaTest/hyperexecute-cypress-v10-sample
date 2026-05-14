@@ -1,397 +1,122 @@
-<img height="100" alt="hyperexecute_logo" src="https://user-images.githubusercontent.com/1688653/159473714-384e60ba-d830-435e-a33f-730df3c3ebc6.png">
+﻿# Run Cypress v10 Tests with HyperExecute on TestMu AI (Formerly LambdaTest)
 
-HyperExecute is a smart test orchestration platform to run end-to-end Cypress tests at the fastest speed possible. HyperExecute lets you achieve an accelerated time to market by providing a test infrastructure that offers optimal speed, test orchestration, and detailed execution logs.
+<p align="center">
+  <a href="https://www.testmuai.com/"><img src="https://img.shields.io/badge/MADE%20BY%20TestMu%20AI-000000.svg?style=for-the-badge&labelColor=000" alt="Made by TestMu AI"></a>
+  <a href="https://www.npmjs.com/package/cypress"><img src="https://img.shields.io/npm/v/cypress.svg?style=for-the-badge&labelColor=000000" alt="Cypress version"></a>
+  <a href="https://community.testmuai.com/"><img src="https://img.shields.io/badge/Join%20the%20community-blueviolet.svg?style=for-the-badge&labelColor=000000" alt="Community"></a>
+</p>
 
-The overall experience helps teams test code and fix issues at a much faster pace. HyperExecute is configured using a YAML file. Instead of moving the Hub close to you, HyperExecute brings the test scripts close to the Hub!
+## Getting Started
 
-- <b>HyperExecute HomePage</b>: https://www.testmuai.com/hyperexecute
-- <b>TestMu AI HomePage</b>: https://www.testmuai.com
-- <b>TestMu AI Support</b>: [support@testmuai.com](mailto:support@testmuai.com)
+[TestMu AI](https://www.testmuai.com/) (Formerly LambdaTest) is the world's first full-stack AI Agentic Quality Engineering platform that empowers teams to test intelligently, smarter, and ship faster. Built for scale, it offers a full-stack testing cloud with 10K+ real devices and 3,000+ browsers. With AI-native test management, MCP servers, and agent-based automation, TestMu AI supports Selenium, Appium, Playwright, and all major frameworks. 
 
-To know more about how HyperExecute does intelligent Test Orchestration, do check out [HyperExecute Getting Started Guide](https://www.testmuai.com/support/docs/getting-started-with-hyperexecute/)
+With TestMu AI (Formerly LambdaTest), you can run Cypress v10 tests using HyperExecute. This sample shows how to configure Cypress v10 + HyperExecute to run on the TestMu AI cloud.
 
-[<img alt="Try it now" width="200 px" align="center" src="images/Try it Now.svg" />](https://hyperexecute.lambdatest.com/?utm_source=github&utm_medium=repository&utm_content=java&utm_term=cypress_v15)
+- [Sign up on TestMu AI](https://www.testmuai.com/register/) (Formerly LambdaTest).
+- Follow the [TestMu AI Documentation](https://www.testmuai.com/support/docs/) for the full setup walkthrough.
 
-## Gitpod
+### Prerequisites
 
-Follow the below steps to run Gitpod button:
+- Node.js and npm (latest stable)
+- A [TestMu AI](https://www.testmuai.com/) account with your username and access key
+- [HyperExecute CLI](https://www.testmuai.com/support/docs/hyperexecute-cli-run-tests-on-hyperexecute-grid/) binary for your OS
 
-1. Click '**Open in Gitpod**' button (You will be redirected to Login/Signup page).
-2. Login with TestMu AI credentials and it will be redirected to Gitpod editor in new tab and current tab will show hyperexecute dashboard.
+### Setup
 
-## [<img alt="Run in Gitpod" width="200 px" align="center" src="images/Gitpod.svg" />](https://hyperexecute.lambdatest.com/hyperexecute/jobs?type=gitpod&framework=Cypress-v15&frameworkType=Cypress)
-
-<!---If logged in, it will be redirected to Gitpod editor in new tab where current tab will show hyperexecute dashboard.
-
-If not logged in, it will be redirected to Login/Signup page and simultaneously redirected to Gitpod editor in a new tab where current tab will show hyperexecute dashboard.
-
-If not signed up, you need to sign up and simultaneously redirected to Gitpod in a new tab where current tab will show hyperexecute dashboard.--->
-
-# How to run Cypress automation tests on HyperExecute — TestMu AI (Formerly LambdaTest)
-
-- [Pre-requisites](#pre-requisites)
-
-  - [Download HyperExecute CLI](#download-hyperexecute-cli)
-  - [Configure Environment Variables](#configure-environment-variables)
-
-- [Auto-Split Execution with cypress_v15](#auto-split-execution-with-cypress_v15)
-
-  - [Core](#core)
-  - [Pre Steps](#pre-steps)
-  - [Post Steps](#post-steps)
-  - [Test Execution](#test-execution)
-
-- [Matrix Execution with cypress_v15](#matrix-execution-with-cypress_v15)
-
-  - [Core](#core-1)
-  - [Pre Steps](#pre-steps)
-  - [Post Steps](#post-steps-1)
-  - [Test Execution](#test-execution-1)
-
-- [Secrets Management](#secrets-management)
-- [Navigation in Automation Dashboard](#navigation-in-automation-dashboard)
-
-# Pre-requisites
-
-Before using HyperExecute, you have to download HyperExecute CLI corresponding to the host OS. Along with it, you also need to export the environment variables _LT_USERNAME_ and _LT_ACCESS_KEY_ that are available in the [TestMu AI Profile](https://accounts.lambdatest.com/detail/profile) page.
-
-## Download HyperExecute CLI
-
-HyperExecute CLI is the CLI for interacting and running the tests on the HyperExecute Grid. The CLI provides a host of other useful features that accelerate test execution. In order to trigger tests using the CLI, you need to download the HyperExecute CLI binary corresponding to the platform (or OS) from where the tests are triggered:
-
-Also, it is recommended to download the binary in the project's parent directory. Shown below is the location from where you can download the HyperExecute CLI binary:
-
-- Mac: https://downloads.lambdatest.com/hyperexecute/darwin/hyperexecute
-- Linux: https://downloads.lambdatest.com/hyperexecute/linux/hyperexecute
-- Windows: https://downloads.lambdatest.com/hyperexecute/windows/hyperexecute.exe
-
-## Configure Environment Variables
-
-Before the tests are run, please set the environment variables LT_USERNAME & LT_ACCESS_KEY from the terminal. The account details are available on your [TestMu AI Profile](https://accounts.lambdatest.com/detail/profile) page.
-
-For macOS:
+Clone and install dependencies:
 
 ```bash
-export LT_USERNAME=LT_USERNAME
-export LT_ACCESS_KEY=LT_ACCESS_KEY
+git clone https://github.com/LambdaTest/hyperexecute-cypress-v10-sample && cd hyperexecute-cypress-v10-sample
+npm install
 ```
 
-For Linux:
+Set your credentials as environment variables.
+
+**macOS / Linux:**
 
 ```bash
-export LT_USERNAME=LT_USERNAME
-export LT_ACCESS_KEY=LT_ACCESS_KEY
+export LT_USERNAME="YOUR_USERNAME"
+export LT_ACCESS_KEY="YOUR_ACCESS_KEY"
+export LT_TUNNEL="YOUR_TUNNEL_NAME"
 ```
 
-For Windows:
+**Windows:**
 
 ```bash
-set LT_USERNAME=LT_USERNAME
-set LT_ACCESS_KEY=LT_ACCESS_KEY
+set LT_USERNAME="YOUR_USERNAME"
+set LT_ACCESS_KEY="YOUR_ACCESS_KEY"
+set LT_TUNNEL="YOUR_TUNNEL_NAME"
 ```
 
-## Auto-Split Execution with cypress_v15
+### Run tests
 
-Auto-split execution mechanism lets you run tests at predefined concurrency and distribute the tests over the available infrastructure. Concurrency can be achieved at different levels - file, module, test suite, test, scenario, etc.
+Using Autosplit:
 
-For more information about auto-split execution, check out the [Auto-Split Getting Started Guide](https://www.testmuai.com/support/docs/getting-started-with-hyperexecute/#smart-auto-test-splitting)
-
-### Core
-
-Auto-split YAML file (_yaml/.hyperexecute_autosplit.yaml_) in the repo contains the following configuration:
-
-```yaml
-globalTimeout: 90
-testSuiteTimeout: 90
-testSuiteStep: 90
 ```
-
-Global timeout, testSuite timeout, and testSuite timeout are set to 90 minutes.
-
-The _runson_ key determines the platform (or operating system) on which the tests are executed. Here we have set the target OS as Windows.
-
-```yaml
-runson: win
-```
-
-Auto-split is set to true in the YAML file.
-
-```yaml
- autosplit: true
-```
-
-_retryOnFailure_ is set to true, instructing HyperExecute to retry failed command(s). The retry operation is carried out till the number of retries mentioned in _maxRetries_ are exhausted or the command execution results in a _Pass_. In addition, the concurrency (i.e. number of parallel sessions) is set to 4.
-
-```yaml
-retryOnFailure: true
-maxRetries: 1
-concurrency: 1
-```
-
-Cypress is set to true in the YML file.
-
-```yaml
-cypress: true
-```
-
-Cypress Build name and tags are added in the YML file.
-
-```yaml
-cypressOps:
-  Build: "Hyperexecute Cypress Sample Build"
-  Tags: ["Hyperexecute", "Cypress", "Windows", "Autosplit"]
-  BuildTags: ["Hyperexecute-Cypress"]
-```
-
-### Pre Steps
-
-Steps (or commands) that must run before the test execution are listed in the _pre_ run step.
-
-```yaml
-pre:
-  - npm install
-```
-
-### Post Steps
-
-Steps (or commands) that need to run after the test execution are listed in the _post_ step. In the example, we _cat_ the contents of _yaml/.hyperexecute_autosplit.yaml_
-
-```yaml
-post:
-  - cat yaml/win/.hyperexecute_autosplit.yaml
-```
-
-The _testDiscovery_ directive contains the command that gives details of the mode of execution, along with detailing the command that is used for test execution. Here, we are fetching the list of class names that would be further passed in the _testRunnerCommand_
-
-```yaml
-testDiscovery:
-  type: raw
-  mode: static
-  command: ls cypress/e2e/2-advanced-examples | sed -n 1,'1p'
-```
-
-Running the above command on the terminal will give a list of scenarios present in the _feature_ files:
-
-- actions.cy.js
-
-The _testRunnerCommand_ contains the command that is used for triggering the test. The output fetched from the _testDiscoverer_ command acts as an input to the _testRunner_ command.
-
-```yaml
-testRunnerCommand: npx cypress run  --spec ./cypress/e2e/2-advanced-examples/$test --browser=chrome-95.0 --headed --config video=false
-```
-
-### Test Execution
-
-The CLI option _--config_ is used for providing the custom HyperExecute YAML file (i.e. _yaml/win/.hyperexecute_autosplit.yaml_ for Windows, _yaml/linux/.hyperexecute_autosplit.yaml_ for Linux and _yaml/mac/.hyperexecute_autosplit.yaml_ for Mac).
-
-#### Execute cypress_v15 tests using Autosplit mechanism on Windows platform
-
-Run the following command on the terminal to trigger the tests in Java files with HyperExecute platform set to Windows. The _--download-artifacts_ option is used to inform HyperExecute to download the artifacts for the job. The _--force-clean-artifacts_ option force cleans any existing artifacts for the project.
-
-```bash
 ./hyperexecute --config yaml/win/.hyperexecute_autosplit.yaml --force-clean-artifacts --download-artifacts
 ```
 
-#### Execute cypress_v15 tests using Autosplit mechanism on Linux platform
+Using Matrix:
 
-Run the following command on the terminal to trigger the tests in Java files with HyperExecute platform set to Linux. The _--download-artifacts_ option is used to inform HyperExecute to download the artifacts for the job. The _--force-clean-artifacts_ option force cleans any existing artifacts for the project.
-
-```bash
-./hyperexecute --config yaml/linux/.hyperexecute_autosplit.yaml --force-clean-artifacts --download-artifacts
 ```
-
-#### Execute cypress_v15 tests using Autosplit mechanism on Mac platform
-
-Run the following command on the terminal to trigger the tests in Java files with HyperExecute platform set to Linux. The _--download-artifacts_ option is used to inform HyperExecute to download the artifacts for the job. The _--force-clean-artifacts_ option force cleans any existing artifacts for the project.
-
-```bash
-./hyperexecute --config yaml/mac/.hyperexecute_autosplit.yaml --force-clean-artifacts --download-artifacts
-```
-
-Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hyperexecute) to check the status of execution
-
-<img width="1247" alt="Screenshot 2022-09-12 at 6 37 26 PM" src="https://user-images.githubusercontent.com/89007259/189662415-491f4660-ba5d-4779-bb65-fd3128585933.png">
-
-# Matrix Execution with cypress_v15
-
-Matrix-based test execution is used for running the same tests across different test (or input) combinations. The Matrix directive in HyperExecute YAML file is a _key:value_ pair where value is an array of strings.
-
-Also, the _key:value_ pairs are opaque strings for HyperExecute. For more information about matrix multiplexing, check out the [Matrix Getting Started Guide](https://www.testmuai.com/support/docs/getting-started-with-hyperexecute/#matrix-based-build-multiplexing)
-
-### Core
-
-In the current example, matrix YAML file (_yaml/.hyperexecute_matrix.yaml_) in the repo contains the following configuration:
-
-```yaml
-globalTimeout: 100
-testSuiteTimeout: 90
-testSuiteStep: 90
-```
-
-Global timeout, testSuite timeout, and testSuite timeout are set to 90 minutes.
-
-The target platform is set to Win. Please set the _[runson]_ key to _[mac]_ if the tests have to be executed on the macOS platform.
-
-```yaml
-runson: win
-```
-
-The _matrix_ constitutes of the following entries - _files_. The entries represent the test file names in the test code.
-
-```yaml
-matrix:
-  os: [win]
-  browser:
-    [
-      "chrome-95.0",
-      "chrome-96.0",
-      "chrome-97.0",
-      "chrome-98.0",
-      "chrome-99.0",
-      "chrome-100.0",
-      "chrome-101.0",
-      "chrome-102.0",
-      "chrome-103.0",
-      "chrome-104.0",
-      "chrome-105.0",
-    ]
-  files: ["actions.cy.js"]
-```
-
-The _testSuites_ object contains a list of commands (that can be presented in an array). In the current YAML file, commands for executing the tests are put in an array (with a '-' preceding each item). The Maven command _mvn test_ is used to run tests located in the current project. In the current project, parallel execution is achieved at the _class_ level. The _maven.repo.local_ parameter in Maven is used for overriding the location where the dependent Maven packages are downloaded.
-
-```yaml
-testSuites:
-  - npx cypress run  --spec ./cypress/e2e/2-advanced-examples/$files --browser=$browser --headed --config video=false
-```
-
-Cypress is set to true in the YML file.
-
-```yaml
-cypress: true
-```
-
-Cypress Build name and tags are added in the YML file.
-
-```yaml
-cypressOps:
-  Build: "Hyperexecute Cypress Sample Build"
-  Tags: ["Hyperexecute", "Cypress", "Windows", "Matrix"]
-  BuildTags: ["Hyperexecute-Cypress"]
-```
-
-### Pre Steps
-
-Steps (or commands) that must run before the test execution are listed in the _pre_ run step.
-
-```yaml
-pre:
-  - npm install
-```
-
-### Post Steps
-
-Steps (or commands) that need to run after the test execution are listed in the _post_ step. In the example, we _cat_ the contents of _yaml/.hyperexecute_matrix.yaml_
-
-```yaml
-post:
-  - cat yaml/win/.hyperexecute_matrix.yaml
-```
-
-## Test Execution
-
-The CLI option _--config_ is used for providing the custom HyperExecute YAML file (i.e. _yaml/win/.hyperexecute_matrix.yaml_ for Windows and _yaml/linux/.hyperexecute_matrix.yaml_ for Linux).
-
-#### Execute cypress_v15 tests using Matrix mechanism on Windows platform
-
-Run the following command on the terminal to trigger the tests in Java files with HyperExecute platform set to Windows. The _--download-artifacts_ option is used to inform HyperExecute to download the artifacts for the job. The _--force-clean-artifacts_ option force cleans any existing artifacts for the project.
-
-```bash
 ./hyperexecute --config yaml/win/.hyperexecute_matrix.yaml --force-clean-artifacts --download-artifacts
 ```
 
-#### Execute cypress_v15 tests using Matrix mechanism on Linux platform
+View results on your TestMu AI dashboard.
 
-Run the following command on the terminal to trigger the tests in Java files with HyperExecute platform set to Linux. The _--download-artifacts_ option is used to inform HyperExecute to download the artifacts for the job. The _--force-clean-artifacts_ option force cleans any existing artifacts for the project.
+### Local testing with TestMu AI Tunnel
 
-```bash
-./hyperexecute --config yaml/linux/.hyperexecute_matrix.yaml --force-clean-artifacts --download-artifacts
+To test locally hosted apps, set up the TestMu AI tunnel. OS-specific guides:
+
+- [Local Testing on Windows](https://www.testmuai.com/support/docs/local-testing-for-windows/)
+- [Local Testing on macOS](https://www.testmuai.com/support/docs/local-testing-for-macos/)
+- [Local Testing on Linux](https://www.testmuai.com/support/docs/local-testing-for-linux/)
+
+Add the following to your capabilities:
+
+```js
+tunnel: true,
 ```
 
-#### Execute cypress_v15 tests using Matrix mechanism on Mac platform
+## Contributions
 
-Run the following command on the terminal to trigger the tests in Java files with HyperExecute platform set to Mac. The _--download-artifacts_ option is used to inform HyperExecute to download the artifacts for the job. The _--force-clean-artifacts_ option force cleans any existing artifacts for the project.
+Contributions are welcome. Open an issue to discuss your idea before submitting a pull request. When reporting bugs, include your Node.js version, OS, and Cypress version.
 
-```bash
-./hyperexecute --config yaml/mac/.hyperexecute_matrix.yaml --force-clean-artifacts --download-artifacts
-```
+## TestMu AI (Formerly LambdaTest) Community
 
-Visit [HyperExecute Automation Dashboard](https://automation.lambdatest.com/hyperexecute) to check the status of execution:
+Connect with testers and developers in the [TestMu AI Community](https://community.testmuai.com/). Ask questions, share what you are building, and discuss best practices in test automation and DevOps.
+  
+## TestMu AI (Formerly LambdaTest) Certifications
 
-<img width="1245" alt="Screenshot 2022-09-12 at 6 51 31 PM" src="https://user-images.githubusercontent.com/89007259/189665359-a5b7d077-ee8a-405a-8f79-619f3308783b.png">
+Earn free [TestMu AI Certifications](https://www.testmuai.com/certifications/) for testers, developers, and QA engineers. Validate your skills in Selenium, Cypress, Playwright, Appium, Espresso and more. Industry-recognized, shareable on LinkedIn, and built by practitioners, not marketers.
 
-## Secrets Management
+## Learning Resources by TestMu AI (Formerly LambdaTest)
 
-In case you want to use any secret keys in the YAML file, the same can be set by clicking on the _Secrets_ button the dashboard.
+Learn modern testing through tutorials, guides, videos, and weekly updates:
 
-<img width="703" alt="cypress_v15_secrets_key_1" src="https://user-images.githubusercontent.com/1688653/152540968-90e4e8bc-3eb4-4259-856b-5e513cbd19b5.png">
+* [TestMu AI Blog](https://www.testmuai.com/blog/)
+* [TestMu AI Learning Hub](https://www.testmuai.com/learning-hub/)
+* [TestMu AI on YouTube](https://www.youtube.com/@TestMuAI)
+* [TestMu AI Newsletter](https://www.testmuai.com/newsletter/)
+  
+## LambdaTest is Now TestMu AI
 
-Now create a _secret_ key that you can use in the HyperExecute YAML file.
+On **January 12, 2026**, [LambdaTest evolved to TestMu AI](https://www.testmuai.com/lambdatest-is-now-testmuai/), the world's first fully autonomous **Agentic AI Quality Engineering Platform**.
 
-<img width="359" alt="cypress_v15_management_1" src="https://user-images.githubusercontent.com/1688653/153250877-e58445d1-2735-409a-970d-14253991c69e.png">
+Same team. Same infrastructure. Same customer accounts. All existing LambdaTest logins, scripts, capabilities, and integrations continue to work without change.
 
-All you need to do is create an environment variable that uses the secret key:
+Find the new home for [LambdaTest](https://www.testmuai.com).
 
-```yaml
-env:
-  PAT: ${{ .secrets.testKey }}
-```
+### How LambdaTest Evolved into TestMu AI
 
-## Navigation in Automation Dashboard
+In 2017, we launched LambdaTest with a simple mission: make testing fast, reliable, and accessible. As LambdaTest grew, we expanded into Test Intelligence, Visual Regression Testing, Accessibility Testing, API Testing, and Performance Testing, covering the full depth of the testing lifecycle.
 
-HyperExecute lets you navigate from/to _Test Logs_ in Automation Dashboard from/to _HyperExecute Logs_. You also get relevant get relevant Cypress test details like video, network log, commands, Exceptions & more in the Dashboard. Effortlessly navigate from the automation dashboard to HyperExecute logs (and vice-versa) to get more details of the test execution.
+As software development entered the AI era, testing had to evolve, too. We rebuilt the architecture to be AI-native from the ground up, with autonomous agents that **plan, author, execute, analyze, and optimize tests** while keeping humans in the loop. The platform integrates with your repos, CI, IDEs, and terminals, continuously learning from every code change and development signal.
 
-Shown below is the HyperExecute Automation dashboard which also lists the tests that were executed as a part of the test suite:
+That evolution earned a new name: **TestMu AI**, built for an AI-first future of quality engineering. TestMu is not a new name for us. It is the name of our annual community conference, which has brought together 100,000+ quality engineers to discuss how AI would reshape testing, long before that became an industry norm. 
 
-<img width="1429" alt="cypress_v15_hyperexecute_automation_dashboard" src="https://user-images.githubusercontent.com/1688653/160455415-d145dd30-8521-4e5b-8c80-0fcbd730b506.png">
+What started as a high-performance cloud testing platform has transformed into an AI-native, multi-agent system powering a connected, end-to-end quality layer. That evolution defined a new identity: LambdaTest evolved into TestMu AI, built for an AI-first future of quality engineering.
 
-Here is a screenshot that lists the automation test that was executed on the HyperExecute grid:
+## Support
 
-<img width="1429" alt="cypress_v15_testing_automation_dashboard" src="https://user-images.githubusercontent.com/1688653/159760375-7f1e3e71-6ea9-449c-8a8d-c4d02c40f7c2.png">
-
-## TestMu AI Community :busts_in_silhouette:
-
-The [TestMu AI Community](https://community.testmuai.com/) allows people to interact with tech enthusiasts. Connect, ask questions, and learn from tech-savvy people. Discuss best practises in web development, testing, and DevOps with professionals from across the globe.
-
-## Documentation & Resources :books:
-
-If you want to learn more about the TestMu AI's features, setup, and usage, visit the [TestMu AI documentation](https://www.testmuai.com/support/docs/). You can also find in-depth tutorials around test automation, mobile app testing, responsive testing, manual testing on [TestMu AI Blog](https://www.testmuai.com/blog/) and [TestMu AI Learning Hub](https://www.testmuai.com/learning-hub/).
-
-## 🚀 LambdaTest is Now TestMu AI
-
-👋 Welcome to TestMu AI, the next evolution of LambdaTest. As of January 2026, [LambdaTest is Now TestMu AI](https://www.testmuai.com/lambdatest-is-now-testmuai/) - we have evolved from a cross-browser testing cloud into a unified, AI-native quality engineering platform designed for the modern DevOps era.
-
-Whether you have been part of the LambdaTest community for years or are just discovering TestMu AI, our mission remains the same: to help you ship faster with high-scale test execution, autonomous testing, and deep quality analytics.
-
-### 🔄 Our Rebrand Journey
-
-In 2017, we introduced LambdaTest with a clear mission: to become the world's most trusted cloud testing platform. We built a scalable, high-performance test cloud that eliminated flakiness, improved developer feedback cycles, and accelerated release velocity for teams worldwide.
-
-As LambdaTest grew, we expanded the platform into Test Intelligence, Visual Regression Testing, Accessibility Testing, API Testing, and Performance Testing, covering the entire testing lifecycle. These capabilities enabled teams to test any stack, on any technology, at enterprise scale.
-
-Over time, we rebuilt the architecture to be AI-native from the ground up. What began as LambdaTest's high-performance testing cloud has now evolved into TestMu AI, an AI-native, multi-agent platform redefining modern quality engineering.
-
-We chose the name TestMu AI to reflect our shift towards intelligent, autonomous testing. While our identity has changed, our core technology and commitment to the testing community stay the same.
-
-👉 Find [LambdaTest's New Home](https://www.testmuai.com/).
-
-### 🔭 Explore TestMu AI
-
-The same infrastructure LambdaTest customers relied on, now delivered through autonomous AI agents.
-
-- [KaneAI](https://www.testmuai.com/kane-ai/)
-- [Agent-to-Agent Testing](https://www.testmuai.com/agent-to-agent-testing/)
-- [HyperExecute](https://www.testmuai.com/hyperexecute/)
-- [Real Device Cloud](https://www.testmuai.com/real-device-cloud/)
-- [Pricing](https://www.testmuai.com/pricing/)
-- [Documentation](https://www.testmuai.com/support/docs/)
+Got a question? Email [support@testmuai.com](mailto:support@testmuai.com) or chat with us 24x7 from our chat portal.
